@@ -29,6 +29,21 @@ public class PlayerController : MonoBehaviour
     private int IdLanding = Animator.StringToHash("Landing");
     private int IdDodgeLeft = Animator.StringToHash("DodgeLeft");
     private int IdDodgeRight = Animator.StringToHash("DodgeRight");
+    private int IdStumbleLow = Animator.StringToHash("StumbleLow");
+    private int IdStumbleCornerLeft = Animator.StringToHash("StumbleCornerLeft");
+    private int IdStumbleCornerRight = Animator.StringToHash("StumbleCornerRight");
+    private int IdStumbleFall = Animator.StringToHash("StumbleFall");
+    private int IdStumbleOffLeft = Animator.StringToHash("StumbleOffLeft");
+    private int IdStumbleOffRight = Animator.StringToHash("StumbleOffRight");
+    private int IdStumbleSideLeft = Animator.StringToHash("StumbleSideLeft");
+    private int IdStumbleSideRight = Animator.StringToHash("StumbleSideRight");
+    private int IdDeathBounce = Animator.StringToHash("DeathBounce");
+    private int IdDeathLower = Animator.StringToHash("DeathLower");
+    private int IdDeathUpper = Animator.StringToHash("DeathUpper");
+    private int IdDeathMovingTrain = Animator.StringToHash("DeathMovingTrain");
+    private int IdDogDeathMovingTrain = Animator.StringToHash("DogDeathMovingTrain");
+    private int IdGuardDeathMovingTrain = Animator.StringToHash("GuardDeathMovingTrain");
+
 
     void Start()
     {
@@ -82,7 +97,7 @@ public class PlayerController : MonoBehaviour
         position = (Side)newXPosition;
     }
 
-    private void SetPlayerAnimator(int id, bool isCroosFade, float fixedTime = 0.1f)
+    public void SetPlayerAnimator(int id, bool isCroosFade, float fixedTime = 0.1f)
     {
         if (isCroosFade)
         {
