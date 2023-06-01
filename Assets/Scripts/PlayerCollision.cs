@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     public enum CollisionX { None, Left, Middle, Right }
-    public enum CollisionY { None, Up, Middle, Down }
+    public enum CollisionY { None, Up, Middle, Down, LowDown }
     public enum CollisionZ { None, Forward, Middle, Backward }
 
     private PlayerController playerController;
@@ -22,6 +23,7 @@ public class PlayerCollision : MonoBehaviour
         collisionX = GetCollisionX(collider);
         collisionY = GetCollisionY(collider);
         collisionZ = GetCollisionZ(collider);
+        SetAnimatorByCollision();
     }
 
     private CollisionX GetCollisionX(Collider collider)
@@ -61,6 +63,10 @@ public class PlayerCollision : MonoBehaviour
         {
             collisionY = CollisionY.Up;
         }
+        else if (average < 0.17f)
+        {
+            collisionY = CollisionY.LowDown;
+        }
         else if (average < 0.33f)
         {
             collisionY = CollisionY.Down;
@@ -94,5 +100,16 @@ public class PlayerCollision : MonoBehaviour
             collisionZ = CollisionZ.Middle;
         }
         return collisionZ;
+    }
+
+    private void SetAnimatorByCollision()
+    {
+        if (collisionZ == CollisionZ.Backward && collisionX == CollisionX.Middle)
+        {
+            if (collisionY == CollisionY.LowDown)
+            {
+                playerController.SetPlayerAnimator(playerController.IdStumbleLow, false);
+            }
+        }
     }
 }

@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 7;
     [SerializeField] private float dodgeSpeed;
     public CharacterController CharacterController { get => _characterController; set => _characterController = value; }
+    public int IdStumbleLow { get => _IdStumbleLow; set => _IdStumbleLow = value; }
+
     private CharacterController _characterController;
     private float newXPosition; 
     private float xPosition; 
@@ -29,7 +31,7 @@ public class PlayerController : MonoBehaviour
     private int IdLanding = Animator.StringToHash("Landing");
     private int IdDodgeLeft = Animator.StringToHash("DodgeLeft");
     private int IdDodgeRight = Animator.StringToHash("DodgeRight");
-    private int IdStumbleLow = Animator.StringToHash("StumbleLow");
+    private int _IdStumbleLow = Animator.StringToHash("StumbleLow");
     private int IdStumbleCornerLeft = Animator.StringToHash("StumbleCornerLeft");
     private int IdStumbleCornerRight = Animator.StringToHash("StumbleCornerRight");
     private int IdStumbleFall = Animator.StringToHash("StumbleFall");
