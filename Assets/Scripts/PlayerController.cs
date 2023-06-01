@@ -14,10 +14,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 7;
     [SerializeField] private float dodgeSpeed;
     public CharacterController CharacterController { get => _characterController; set => _characterController = value; }
-    public int IdStumbleLow { get => _IdStumbleLow; set => _IdStumbleLow = value; }
-    public int IdDeathLower { get => _IdDeathLower; set => _IdDeathLower = value; }
-    public int IdDeathMovingTrain { get => _IdDeathMovingTrain; set => _IdDeathMovingTrain = value; }
-    public int IdDeathBounce { get => _IdDeathBounce; set => _IdDeathBounce = value; }
+    public int IdStumbleLow                        { get => _IdStumbleLow; set => _IdStumbleLow = value; }
+    public int IdDeathLower                        { get => _IdDeathLower; set => _IdDeathLower = value; }
+    public int IdDeathMovingTrain                  { get => _IdDeathMovingTrain; set => _IdDeathMovingTrain = value; }
+    public int IdDeathBounce                       { get => _IdDeathBounce; set => _IdDeathBounce = value; }
+    public int IdDeathUpper                        { get => _IdDeathUpper; set => _IdDeathUpper = value; }
+    public bool IsRolling                          { get => _isRolling; set => _isRolling = value; }
+    public int IdStumbleCornerLeft                 { get => _IdStumbleCornerLeft; set => _IdStumbleCornerLeft = value; }
+    public int IdStumbleCornerRight                { get => _IdStumbleCornerRight; set => _IdStumbleCornerRight = value; }
+    public int IdStumbleSideLeft                   { get => _IdStumbleSideLeft; set => _IdStumbleSideLeft = value; }
+    public int IdStumbleSideRight                  { get => _IdStumbleSideRight; set => _IdStumbleSideRight = value; }
+    public int IdStumbleOffLeft { get => _IdStumbleOffLeft; set => _IdStumbleOffLeft = value; }
+    public int IdStumbleOffRight { get => _IdStumbleOffRight; set => _IdStumbleOffRight = value; }
 
     private CharacterController _characterController;
     private float newXPosition; 
@@ -25,29 +33,29 @@ public class PlayerController : MonoBehaviour
     private float yPosition;
     private float rollTimer;
     private bool swipeLeft, swipeRight, swipeDown, swipeUp;
-    private bool isJumping, isRolling;
+    private bool isJumping, _isRolling;
 
     private Animator playerAnimator;
-    private int IdJump = Animator.StringToHash("Jump");
-    private int IdFall = Animator.StringToHash("Fall");
-    private int IdRoll = Animator.StringToHash("Roll");
-    private int IdLanding = Animator.StringToHash("Landing");
-    private int IdDodgeLeft = Animator.StringToHash("DodgeLeft");
-    private int IdDodgeRight = Animator.StringToHash("DodgeRight");
-    private int _IdStumbleLow = Animator.StringToHash("StumbleLow");
-    private int IdStumbleCornerLeft = Animator.StringToHash("StumbleCornerLeft");
-    private int IdStumbleCornerRight = Animator.StringToHash("StumbleCornerRight");
-    private int IdStumbleFall = Animator.StringToHash("StumbleFall");
-    private int IdStumbleOffLeft = Animator.StringToHash("StumbleOffLeft");
-    private int IdStumbleOffRight = Animator.StringToHash("StumbleOffRight");
-    private int IdStumbleSideLeft = Animator.StringToHash("StumbleSideLeft");
-    private int IdStumbleSideRight = Animator.StringToHash("StumbleSideRight");
-    private int _IdDeathBounce = Animator.StringToHash("DeathBounce");
-    private int _IdDeathLower = Animator.StringToHash("DeathLower");
-    private int IdDeathUpper = Animator.StringToHash("DeathUpper");
-    private int _IdDeathMovingTrain = Animator.StringToHash("DeathMovingTrain");
-    private int IdDogDeathMovingTrain = Animator.StringToHash("DogDeathMovingTrain");
-    private int IdGuardDeathMovingTrain = Animator.StringToHash("GuardDeathMovingTrain");
+    private int IdJump                   = Animator.StringToHash("Jump");
+    private int IdFall                   = Animator.StringToHash("Fall");
+    private int IdRoll                   = Animator.StringToHash("Roll");
+    private int IdLanding                = Animator.StringToHash("Landing");
+    private int IdDodgeLeft              = Animator.StringToHash("DodgeLeft");
+    private int IdDodgeRight             = Animator.StringToHash("DodgeRight");
+    private int _IdStumbleLow            = Animator.StringToHash("StumbleLow");
+    private int _IdStumbleCornerLeft     = Animator.StringToHash("StumbleCornerLeft");
+    private int _IdStumbleCornerRight    = Animator.StringToHash("StumbleCornerRight");
+    private int _IdStumbleFall           = Animator.StringToHash("StumbleFall");
+    private int _IdStumbleOffLeft        = Animator.StringToHash("StumbleOffLeft");
+    private int _IdStumbleOffRight       = Animator.StringToHash("StumbleOffRight");
+    private int _IdStumbleSideLeft       = Animator.StringToHash("StumbleSideLeft");
+    private int _IdStumbleSideRight      = Animator.StringToHash("StumbleSideRight");
+    private int _IdDeathBounce           = Animator.StringToHash("DeathBounce");
+    private int _IdDeathLower            = Animator.StringToHash("DeathLower");
+    private int _IdDeathUpper            = Animator.StringToHash("DeathUpper");
+    private int _IdDeathMovingTrain      = Animator.StringToHash("DeathMovingTrain");
+    private int _IdDogDeathMovingTrain   = Animator.StringToHash("DogDeathMovingTrain");
+    private int _IdGuardDeathMovingTrain = Animator.StringToHash("GuardDeathMovingTrain");
 
 
     void Start()
@@ -78,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
     private void SetPlayerPosition()
     {
-        if (swipeLeft && !isRolling)
+        if (swipeLeft && !IsRolling)
         {
             if (position != Side.Left)
             {
@@ -86,7 +94,7 @@ public class PlayerController : MonoBehaviour
                 SetPlayerAnimator(IdDodgeLeft, false);
             }
         }
-        else if (swipeRight && !isRolling)
+        else if (swipeRight && !IsRolling)
         {
             if (position != Side.Right)
             {
@@ -126,7 +134,7 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Fall"))
                 SetPlayerAnimator(IdLanding, false);
-            if (swipeUp && !isRolling)
+            if (swipeUp && !IsRolling)
             {
                 isJumping = true;
                 yPosition = jumpForce;
@@ -147,7 +155,7 @@ public class PlayerController : MonoBehaviour
 
         if (rollTimer <= 0)
         {
-            isRolling = false;
+            IsRolling = false;
             rollTimer = 0;
             _characterController.center = new Vector3(0, .45f, 0);
             _characterController.height = .9f;
@@ -155,7 +163,7 @@ public class PlayerController : MonoBehaviour
 
         if (swipeDown && !isJumping)
         {
-            isRolling = true;
+            IsRolling = true;
             rollTimer = .5f;
             SetPlayerAnimator(IdRoll, true);
             _characterController.center = new Vector3(0, .2f, 0);
