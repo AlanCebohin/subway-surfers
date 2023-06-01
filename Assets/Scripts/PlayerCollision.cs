@@ -23,7 +23,7 @@ public class PlayerCollision : MonoBehaviour
         collisionX = GetCollisionX(collider);
         collisionY = GetCollisionY(collider);
         collisionZ = GetCollisionZ(collider);
-        SetAnimatorByCollision();
+        SetAnimatorByCollision(collider);
     }
 
     private CollisionX GetCollisionX(Collider collider)
@@ -102,7 +102,7 @@ public class PlayerCollision : MonoBehaviour
         return collisionZ;
     }
 
-    private void SetAnimatorByCollision()
+    private void SetAnimatorByCollision(Collider collider)
     {
         if (collisionZ == CollisionZ.Backward && collisionX == CollisionX.Middle)
         {
@@ -113,6 +113,17 @@ public class PlayerCollision : MonoBehaviour
             else if (collisionY == CollisionY.Down)
             {
                 playerController.SetPlayerAnimator(playerController.IdDeathLower, false);
+            }
+            else if (collisionY == CollisionY.Middle)
+            {
+                if (collider.CompareTag("TrainMoving"))
+                {
+                    playerController.SetPlayerAnimator(playerController.IdDeathMovingTrain, false);
+                }
+                else
+                {
+                    playerController.SetPlayerAnimator(playerController.IdDeathBounce, false);
+                }
             }
         }
     }

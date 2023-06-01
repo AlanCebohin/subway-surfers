@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public CharacterController CharacterController { get => _characterController; set => _characterController = value; }
     public int IdStumbleLow { get => _IdStumbleLow; set => _IdStumbleLow = value; }
     public int IdDeathLower { get => _IdDeathLower; set => _IdDeathLower = value; }
+    public int IdDeathMovingTrain { get => _IdDeathMovingTrain; set => _IdDeathMovingTrain = value; }
+    public int IdDeathBounce { get => _IdDeathBounce; set => _IdDeathBounce = value; }
 
     private CharacterController _characterController;
     private float newXPosition; 
@@ -40,10 +42,10 @@ public class PlayerController : MonoBehaviour
     private int IdStumbleOffRight = Animator.StringToHash("StumbleOffRight");
     private int IdStumbleSideLeft = Animator.StringToHash("StumbleSideLeft");
     private int IdStumbleSideRight = Animator.StringToHash("StumbleSideRight");
-    private int IdDeathBounce = Animator.StringToHash("DeathBounce");
+    private int _IdDeathBounce = Animator.StringToHash("DeathBounce");
     private int _IdDeathLower = Animator.StringToHash("DeathLower");
     private int IdDeathUpper = Animator.StringToHash("DeathUpper");
-    private int IdDeathMovingTrain = Animator.StringToHash("DeathMovingTrain");
+    private int _IdDeathMovingTrain = Animator.StringToHash("DeathMovingTrain");
     private int IdDogDeathMovingTrain = Animator.StringToHash("DogDeathMovingTrain");
     private int IdGuardDeathMovingTrain = Animator.StringToHash("GuardDeathMovingTrain");
 
