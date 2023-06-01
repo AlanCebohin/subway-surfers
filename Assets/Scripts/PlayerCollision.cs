@@ -10,9 +10,9 @@ public class PlayerCollision : MonoBehaviour
     public enum CollisionZ { None, Forward, Middle, Backward }
 
     private PlayerController playerController;
-    [SerializeField] private CollisionX collisionX;
-    [SerializeField] private CollisionY collisionY;
-    [SerializeField] private CollisionZ collisionZ;
+    private CollisionX collisionX;
+    private CollisionY collisionY;
+    private CollisionZ collisionZ;
 
     private void Awake() {
         playerController = gameObject.GetComponent<PlayerController>();
@@ -108,6 +108,7 @@ public class PlayerCollision : MonoBehaviour
         {
             if (collisionY == CollisionY.LowDown)
             {
+                collider.enabled = false;
                 playerController.SetPlayerAnimator(playerController.IdStumbleLow, false);
             }
             else if (collisionY == CollisionY.Down)
@@ -120,7 +121,7 @@ public class PlayerCollision : MonoBehaviour
                 {
                     playerController.SetPlayerAnimator(playerController.IdDeathMovingTrain, false);
                 }
-                else
+                else if (!collider.CompareTag("Ramp"))
                 {
                     playerController.SetPlayerAnimator(playerController.IdDeathBounce, false);
                 }
@@ -145,12 +146,20 @@ public class PlayerCollision : MonoBehaviour
         {
             if (collisionX == CollisionX.Left)
             {
-                playerController.SetPlayerAnimator(playerController.IdStumbleOffRight, false);
+                playerController.SetPlayerAnimator(playerController.IdStumbleCornerLeft, false);
             }
             else if (collisionX == CollisionX.Right)
             {
-                playerController.SetPlayerAnimator(playerController.IdStumbleOffLeft, false);
+                playerController.SetPlayerAnimator(playerController.IdStumbleCornerRight, false);
             }
         }
+    }
+
+    public void ResetCollision()
+    {
+        Debug.Log($"CollisionX : {collisionX}, CollisionY: {collisionY}, CollisionZ: {collisionZ}");
+        collisionX = CollisionX.None;
+        collisionY = CollisionY.None;
+        collisionZ = CollisionZ.None;
     }
 }

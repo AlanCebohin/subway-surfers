@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour
     private int _IdDogDeathMovingTrain   = Animator.StringToHash("DogDeathMovingTrain");
     private int _IdGuardDeathMovingTrain = Animator.StringToHash("GuardDeathMovingTrain");
 
+    private PlayerCollision playerCollision;
+
 
     void Start()
     {
@@ -65,6 +67,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         _characterController = GetComponent<CharacterController>();
         yPosition = -1;
+        playerCollision = GetComponent<PlayerCollision>();
     }
 
     void Update()
@@ -117,7 +120,11 @@ public class PlayerController : MonoBehaviour
             playerAnimator.CrossFadeInFixedTime(id, fixedTime);
         }
         else
+        {
             playerAnimator.Play(id);
+        }
+
+        playerCollision.ResetCollision();
     }
 
     private void MovePlayer()
