@@ -115,6 +115,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetPlayerAnimator(int id, bool isCroosFade, float fixedTime = 0.1f)
     {
+        playerAnimator.SetLayerWeight(0, 1);
         if (isCroosFade)
         {
             playerAnimator.CrossFadeInFixedTime(id, fixedTime);
@@ -123,6 +124,15 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.Play(id);
         }
+
+        playerCollision.ResetCollision();
+    }
+
+    public void SetPlayerAnimatorWithLayer(int id)
+    {
+        playerAnimator.SetLayerWeight(1, 1);
+        
+        playerAnimator.Play(id);
 
         playerCollision.ResetCollision();
     }
