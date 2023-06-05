@@ -189,7 +189,7 @@ Material:
     - _Cull: 0
     - _CullMode: 2
     - _CullModeForward: 2
-    - _CurveX: 0
+    - _CurveX: -0.04
     - _CurveY: 0
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
