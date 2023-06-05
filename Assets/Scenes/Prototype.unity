@@ -510,6 +510,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2325800957841607398, guid: 3e0bc2c5fa5db44e9b31d5c58acbc0a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a8ee4fc6a0957dd4a8a4d45bd25d9995, type: 2}
     - target: {fileID: 2325800957841607399, guid: 3e0bc2c5fa5db44e9b31d5c58acbc0a7, type: 3}
       propertyPath: m_Name
       value: blocker_jump (1)
@@ -529,7 +533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2325800957841607396, guid: 3e0bc2c5fa5db44e9b31d5c58acbc0a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.059
+      value: -1.142
       objectReference: {fileID: 0}
     - target: {fileID: 2325800957841607396, guid: 3e0bc2c5fa5db44e9b31d5c58acbc0a7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -567,13 +571,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2325800957841607398, guid: 3e0bc2c5fa5db44e9b31d5c58acbc0a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a8ee4fc6a0957dd4a8a4d45bd25d9995, type: 2}
     - target: {fileID: 2325800957841607399, guid: 3e0bc2c5fa5db44e9b31d5c58acbc0a7, type: 3}
       propertyPath: m_Name
       value: blocker_jump
       objectReference: {fileID: 0}
     - target: {fileID: 2325800957841607399, guid: 3e0bc2c5fa5db44e9b31d5c58acbc0a7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e0bc2c5fa5db44e9b31d5c58acbc0a7, type: 3}
@@ -1420,7 +1428,7 @@ CapsuleCollider:
   m_Radius: 0.3
   m_Height: 0.8
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0.2}
+  m_Center: {x: 0, y: 0.5, z: 0.15}
 --- !u!1001 &1317401141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1428,6 +1436,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1180534907}
     m_Modifications:
+    - target: {fileID: 1588833314195265824, guid: d6c0a4cc21e894db89a56c6b9bb3d72d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a8ee4fc6a0957dd4a8a4d45bd25d9995, type: 2}
     - target: {fileID: 1588833314195265825, guid: d6c0a4cc21e894db89a56c6b9bb3d72d, type: 3}
       propertyPath: m_Name
       value: blocker_roll
@@ -1477,12 +1489,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8930106691806673579, guid: d6c0a4cc21e894db89a56c6b9bb3d72d, type: 3}
+      propertyPath: m_Size.y
+      value: 2.1469407
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930106691806673579, guid: d6c0a4cc21e894db89a56c6b9bb3d72d, type: 3}
       propertyPath: m_Size.z
-      value: 0.41381025
+      value: 0.3815713
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930106691806673579, guid: d6c0a4cc21e894db89a56c6b9bb3d72d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930106691806673579, guid: d6c0a4cc21e894db89a56c6b9bb3d72d, type: 3}
+      propertyPath: m_Center.y
+      value: 1.8700128
       objectReference: {fileID: 0}
     - target: {fileID: 8930106691806673579, guid: d6c0a4cc21e894db89a56c6b9bb3d72d, type: 3}
       propertyPath: m_Center.z
-      value: -0.53493714
+      value: -0.5664451
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6c0a4cc21e894db89a56c6b9bb3d72d, type: 3}
@@ -2934,7 +2958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b6d9d13b45d492bacaa25573c3d4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 8
+  forwardSpeed: 10
   jumpForce: 7
   dodgeSpeed: 8
 --- !u!114 &8042410095796343015

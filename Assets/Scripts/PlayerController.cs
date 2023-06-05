@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
     private int _IdGuardDeathMovingTrain = Animator.StringToHash("GuardDeathMovingTrain");
 
     private PlayerCollision playerCollision;
+    private CapsuleCollider playerCollider;
 
 
     void Start()
@@ -68,6 +69,7 @@ public class PlayerController : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         yPosition = -1;
         playerCollision = GetComponent<PlayerCollision>();
+        playerCollider = GetComponentInChildren<CapsuleCollider>();
     }
 
     void Update()
@@ -176,6 +178,8 @@ public class PlayerController : MonoBehaviour
             rollTimer = 0;
             _characterController.center = new Vector3(0, .45f, 0);
             _characterController.height = .9f;
+            playerCollider.center = new Vector3(0, .45f, 0);
+            playerCollider.height = .9f;
         }
 
         if (swipeDown && !isJumping)
@@ -185,6 +189,8 @@ public class PlayerController : MonoBehaviour
             SetPlayerAnimator(IdRoll, true);
             _characterController.center = new Vector3(0, .2f, 0);
             _characterController.height = .4f;
+            playerCollider.center = new Vector3(0, .2f, 0);
+            playerCollider.height = .4f;
         }
     }
 }
