@@ -18,7 +18,9 @@ I don't own any of the assets or IP, I just use them as part of a prototype and 
 
 ## Showcase
 
-![SS-1](https://github.com/AlanCebohin/subway-surfers/assets/19630708/7439cfec-24d1-4714-b554-7c0884c4decb)
+
+![SS-1](https://github.com/AlanCebohin/subway-surfers/assets/19630708/fb57d95e-2bb6-4e2c-a13a-f0c7e5ac5149)
 
 
-![ss-2](https://github.com/AlanCebohin/subway-surfers/assets/19630708/9dc0b84e-83f8-4aee-8c52-5e04412ea543)
+![ss-2](https://github.com/AlanCebohin/subway-surfers/assets/19630708/bf010a66-eb56-428b-9138-7aa789367030)
+
