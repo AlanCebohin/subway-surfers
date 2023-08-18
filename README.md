@@ -1,6 +1,6 @@
 <div class="col-10 mx-auto">
     <div class="row">
-        <h1 class="mx-auto mt-5">
+        <h1 class="mx-auto mt-5" align="center">
             Subway Surfers
         </h1>
     </div>
@@ -15,6 +15,7 @@ The IP belongs to SYBO (https://sybogames.com/).
 
 
 I don't own any of the assets or IP, I just use them as part of a prototype and personal training.
+<br>
 
 ## Showcase
 
